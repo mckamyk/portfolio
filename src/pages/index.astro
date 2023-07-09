@@ -1,81 +1,71 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Github from "/github.svg";
+import Twitter from "/twitter.svg";
+import Sky from "/sky.jpg";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
+<Layout title="Build the things">
+	<main class="flex flex-col items-center justify-center">
+		<div class="flex flex-col text-4xl w-fit items-center">
+			<div
+				class="bg-gradient-to-tr from-rose-700 to-cyan-500 mt-20 mb-2 rounded-full p-1"
+			>
+				<img
+					class="z-10 rounded-full blur-0"
+					src={Sky}
+					alt="Profile Logo"
+					width="128"
+					height="128"
+				/>
+			</div>
+			<div>
+				<span class="font-bold">McKittrick</span> Kaminski
+			</div>
+		</div>
+
+		<div class="flex justify-between items-center gap-4 mt-4">
+			<div class="text-slate-400 text-2xl">@McKamyk</div>
+
+			<div class="flex gap-2 items-center">
+				<a class="inline px-1" href="http://github.com/mckamyk" target="_blank">
+					<img src={Github} alt="Github Logo" width="32" height="32" />
+				</a>
+				<a
+					class="inline px-1"
+					href="https://twitter.com/mckamyk"
+					target="_blank"
+				>
+					<img src={Twitter} alt="Twitter Logo" width="32" height="32" />
+				</a>
+			</div>
+		</div>
+
+		<div class="flex gap-2 mt-4">
+			<div class="border-r-[1px] border-r-slate-100 pr-2">Full Stack</div>
+			<div class="border-r-[1px] border-r-slate-100 pr-2">Crypto</div>
+			<div class="border-r-[1px] border-r-slate-100 pr-2">Analytics</div>
+			<div class="">Automation</div>
+		</div>
+
+		<div class="mt-16 flex flex-col p-2 gap-2 items-center">
+			<div class="text-3xl mb-4">Projects</div>
+			<ProjectCard
+				name="Weact"
+				description="Preact inside Web Components"
+				github="https://github.com/mckamyk/weact"
 			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
+			<ProjectCard
+				name="Viewer"
+				description="Ethereum Block Analysis"
+				github="https://github.com/mckamyk/viewer"
 			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
+			<ProjectCard
+				name="Anthill"
+				description="Gnosis Safe Multisig Automation"
+				github="https://github.com/mckamyk/viewer"
 			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		</div>
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>

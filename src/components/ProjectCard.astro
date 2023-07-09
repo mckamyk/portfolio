@@ -1,0 +1,38 @@
+---
+interface Props {
+	name: string;
+	description: string;
+	github?: `https://github.com/mckamyk/${string}`;
+}
+const { name, description, github } = Astro.props;
+import Github from "/github.svg";
+---
+
+<div
+	class="bg-gradient-to-tr from-blue-900 to-sky-500 p-1 rounded w-[400px] cursor-default select-none"
+>
+	<div class="bg-slate-900 rounded p-2 flex justify-between items-center">
+		<div>
+			<div class="text-xl font-bold">
+				{name}
+			</div>
+			<div>
+				{description}
+			</div>
+		</div>
+
+		<a
+			href={github}
+			target="_blank"
+			class="p-2 hover:bg-slate-500 transition-colors rounded-full"
+		>
+			<img
+				src={Github}
+				width="24"
+				height="24"
+				alt="Github"
+				class="opacity-50 hover:opacity-100 transition-opacity"
+			/>
+		</a>
+	</div>
+</div>

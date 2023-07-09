@@ -1,0 +1,72 @@
+---
+import Layout from "../../../layouts/BlogItem.astro";
+import React from "/react-icon.svg";
+import Lit from "/lit.svg";
+import Code from "../../../components/Code";
+import { code1, code2, code3 } from "./code";
+---
+
+<Layout title="Weact">
+	<main class="flex flex-col items-center gap-4 mb-96">
+		<div class="flex justify-center">
+			<div class="flex justify-between items-center w-[200px]">
+				<img src={React} alt="React" class="w-1/3" height="64" width="64" />
+				<span class="w-1/3 text-center text-4xl">+</span>
+				<span class="text-5xl w-1/3">🔥</span>
+			</div>
+		</div>
+
+		<p class="max-w-xl">
+			Weact is a library I've made that allows you to use React components
+			inside a Lit Web Component. A simple Hello World React app with this
+			framework would be less than
+			<strong>1kb</strong>, with about <strong>10kb</strong> in once-loaded dependencies.
+			Loading your second or third component would only add about <strong
+				>1kb</strong
+			> each, growing depending on the size of the react component.
+		</p>
+
+		<Code code={code1} filename="test.tsx" />
+
+		<p class="max-w-xl">
+			This is a simple react component, except the exported compnent is passed
+			throught he <code>PreactFactory(...)</code> function. Lets look at that next.
+		</p>
+
+		<Code code={code2} filename="PreactComponent.ts" />
+
+		<p class="max-w-xl">
+			The factory creates a class that extends <code>PreactComponent</code>, and
+			calls its constructor with the React component. Next, we'll look at the
+			bulk of the magic, which lies within the PreactComponent class.
+		</p>
+
+		<Code code={code3} filename="PreactComponent.ts" />
+
+		<p class="max-w-xl">
+			The constructor of the <code>PreactComponent</code> simply registers the React
+			Component as a private property on itself. The <code>render()</code> function
+			creates a container for the react component and a <code><link /></code> tag
+			that points to the tailwind stylesheet which is then mounted in the web component's
+			Shadow DOM to prevent collisions outside of this component, and a container
+			for the React component to be rendered into.
+		</p>
+
+		<p class="max-w-xl">
+			The <code>static get properties()</code> is assigning the properties of the
+			Lit element that should trigger a rerender should they change. Our lifesycle
+			hook <code>updated()</code> triggers <code>preactRender()</code>, both for
+			initial paint, as well as when the properties change.
+		</p>
+
+		<p class="max-w-xl">
+			An update to the react component by calling <code>render()</code> again does
+			not reset the state inside the React component, but does update the props,
+			and the react component will rerender with the new props.
+		</p>
+
+		<p class="max-w-xl">You can have many of these</p>
+
+		<p class="max-w-xl"></p>
+	</main>
+</Layout>
