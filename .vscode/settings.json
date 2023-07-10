@@ -3,5 +3,8 @@
 	"tailwindCSS.classAttributes": [
 		"class",
 		"className",
-	]
+	],
+	"yaml.schemas": {
+		"https://json.schemastore.org/yamllint.json": "file:///home/mac/code/portfolio/.github/actions/deploy.yml"
+	}
 }
